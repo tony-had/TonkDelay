@@ -9,3 +9,17 @@
 */
 
 #pragma once
+
+#include "../JuceLibraryCode/JuceHeader.h"
+#include "DelayParameters.h"
+
+class ParameterManager
+{
+public:
+	ParameterManager(AudioProcessor&);
+	~ParameterManager();
+
+	AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+
+	AudioProcessorValueTreeState valueTreeState;
+};
