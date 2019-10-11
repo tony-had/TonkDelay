@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="yqjPfe" name="TonkDelay" projectType="audioplug" jucerVersion="5.4.4">
+<JUCERPROJECT id="yqjPfe" name="TonkDelay" projectType="audioplug" jucerVersion="5.4.4"
+              version="0.0.1" companyName="TONK" companyCopyright="2019" companyWebsite="https://github.com/tony-had"
+              companyEmail="tony.hadjiivanov@gmail.com" pluginDesc="A basic delay effect."
+              pluginManufacturerCode="TONK" pluginCode="Del0" pluginVST3Category="Delay,Fx"
+              pluginRTASCategory="16,8192" pluginAAXCategory="16,8192">
   <MAINGROUP id="s1TQ6d" name="TonkDelay">
     <GROUP id="{1AC447A7-6DDD-194F-21BE-261CF3191FB6}" name="Source">
       <FILE id="yqKNot" name="DelayParameters.h" compile="0" resource="0"
