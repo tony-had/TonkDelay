@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "ParameterManager.h"
+#include "Delay.h"
 
 //==============================================================================
 /**
@@ -58,6 +59,8 @@ public:
 
 private:
 	ParameterManager parameterManager;
+
+	std::unique_ptr<Delay> delay[2];
 
 	//==============================================================================
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TonkDelayAudioProcessor)

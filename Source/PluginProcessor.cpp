@@ -25,6 +25,10 @@ TonkDelayAudioProcessor::TonkDelayAudioProcessor()
 #endif
 	parameterManager(*this)
 {
+	for (int i = 0; i < 2; i++)
+	{
+		delay[i].reset(new Delay());
+	}
 }
 
 TonkDelayAudioProcessor::~TonkDelayAudioProcessor()
@@ -96,6 +100,10 @@ void TonkDelayAudioProcessor::changeProgramName(int index, const String& newName
 //==============================================================================
 void TonkDelayAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
+	for (int i = 0; i < 2; i++)
+	{
+		delay[i]->setSampleRate(sampleRate);
+	}
 }
 
 void TonkDelayAudioProcessor::releaseResources()
@@ -147,7 +155,11 @@ void TonkDelayAudioProcessor::processBlock(AudioBuffer<float>& buffer, MidiBuffe
 	{
 		auto* channelData = buffer.getWritePointer(channel);
 
-		// ..do something to the data...
+		const float delayTime = *parameterManager.valueTreeState.getRawParameterValue(delayFloatParameters[delayTimeParameter].parameterId);
+		const float feedback = *parameterManager.valueTreeState.getRawParameterValue(delayFloatParameters[delayFeedbackParameter].parameterId);
+		const float dryWetMix = *parameterManager.valueTreeState.getRawParameterValue(delayFloatParameters[delayMixParameter].parameterId);
+
+		delay[channel]->process(channelData, delayTime, feedback, dryWetMix, channelData, buffer.getNumSamples());
 	}
 }
 
